@@ -24,7 +24,7 @@ class App extends Component {
     const results = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed');
     const data =  await results.json();
     this.movies = data.results;
-    await this.sleep(4000);
+    await this.sleep(1000);
     this.setState({
       movies: this.movies,
       loading: false
