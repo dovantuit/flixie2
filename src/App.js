@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button } from 'reactstrap';
 import { Container } from 'bloomer';
 import "bulma/css/bulma.css";
 import MoviesList from "./MoviesList";
-import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { InputGroup, Input } from 'reactstrap';
 //import TEST_DATA from './test_json';
 
 class App extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +17,7 @@ class App extends Component {
         }
     }
     // ham kiem cai dat thoi gian loading
-    sleep(ms) {
+    sleep = (ms) => {
         return new Promise(resolve => setTimeout(resolve, ms))
     }
     // ham tu dong loading du lieu 
@@ -32,18 +31,15 @@ class App extends Component {
             filteredMovie: this.movies,
             loading: false
         });
-        console.log('sau khi filter');
+        console.log(' after filter - sau khi filter');
         console.log(this.state.filteredMovie);
-
     }
     // ham loc du lieu
-    filterMovies(text) {
+    filterMovies = (textMovie) => {
         let moviesCopy = this.state.movies;
-        let results = moviesCopy.filter(movie => movie.title.toLowerCase().includes(text.toLowerCase()));
+        let results = moviesCopy.filter(movie => movie.title.toLowerCase().includes(textMovie.toLowerCase()));
         this.setState({ filteredMovie: results });
     };
-
-
 
     render() {
         //let movies = TEST_DATA.results;
@@ -56,15 +52,14 @@ class App extends Component {
         }
 
         return (
-            <Container style={{background:'gray'}}>
+            <Container style={{ background: 'gray' }}>
                 <div className="App">
-                    <InputGroup>
+                    <InputGroup className="Search">
                         <Input
                             type='phim'
                             onChange={(phim) => this.filterMovies(phim.target.value)}
                             placeholder='search here'
                         />
-                        <InputGroupAddon addonType="append"></InputGroupAddon>
                     </InputGroup>
                     <Container>
                         {content}
