@@ -31,8 +31,6 @@ class App extends Component {
             filteredMovie: this.movies,
             loading: false
         });
-        console.log(' after filter - sau khi filter');
-        console.log(this.state.filteredMovie);
     }
     // ham loc du lieu
     filterMovies = (textMovie) => {
@@ -46,9 +44,9 @@ class App extends Component {
         let content;
         // kiem tra xem trang loading xong chua
         if (this.state.loading) {
-            content = <h1>I'm loading, just wait a bit guys</h1>
+            content=<h1>i'm loading please wait a bit</h1>
         } else {
-            content = <MoviesList movies={this.state.filteredMovie} />
+            content=<MoviesList movies={this.state.filteredMovie} />
         }
 
         return (
@@ -62,7 +60,7 @@ class App extends Component {
                         />
                     </InputGroup>
                     <Container>
-                        {content}
+                       {content}
                     </Container>
                 </div>
             </Container>
