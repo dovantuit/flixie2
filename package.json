@@ -9,6 +9,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-modal-image": "^2.3.2",
+    "react-native": "^0.61.1",
     "react-scripts": "1.1.4",
     "reactstrap": "^6.3.1"
   },

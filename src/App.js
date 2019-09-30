@@ -24,19 +24,21 @@ class App extends Component {
     async componentDidMount() {
         const results = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed');
         const data = await results.json();
+        console.log(data)
         this.movies = data.results;
         await this.sleep(1000);
         await this.setState({
             movies: this.movies,
             filteredMovie: this.movies,
             loading: false
-        });
+        }, () => console.log(this.state.movies));
     }
     // ham loc du lieu
     filterMovies = (textMovie) => {
         let moviesCopy = this.state.movies;
         let results = moviesCopy.filter(movie => movie.title.toLowerCase().includes(textMovie.toLowerCase()));
-        this.setState({ filteredMovie: results });
+        console.log(`hello`)
+        this.setState({ filteredMovie: results }, () => console.log(results));
     };
 
     render() {
@@ -44,9 +46,9 @@ class App extends Component {
         let content;
         // kiem tra xem trang loading xong chua
         if (this.state.loading) {
-            content=<h1>i'm loading please wait a bit</h1>
+            content = <h1>i'm loading please wait a bit</h1>
         } else {
-            content=<MoviesList movies={this.state.filteredMovie} />
+            content = <MoviesList movies={this.state.filteredMovie} />
         }
 
         return (
@@ -60,7 +62,7 @@ class App extends Component {
                         />
                     </InputGroup>
                     <Container>
-                       {content}
+                        {content}
                     </Container>
                 </div>
             </Container>
