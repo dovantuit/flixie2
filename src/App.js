@@ -37,7 +37,7 @@ class App extends Component {
     filterMovies = (textMovie) => {
         let moviesCopy = this.state.movies;
         let results = moviesCopy.filter(movie => movie.title.toLowerCase().includes(textMovie.toLowerCase()));
-        console.log(`hello`)
+        console.log(`hello this is just log test`)
         this.setState({ filteredMovie: results }, () => console.log(results));
     };
 
